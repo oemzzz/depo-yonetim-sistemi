@@ -1,0 +1,51 @@
+@{ ViewData["Title"] = "Yeni Hareket"; }
+
+<h1>Yeni Hareket (Bırakma / Alma)</h1>
+
+@if (TempData["Hata"] != null)
+{
+    <div class="alert alert-danger">@TempData["Hata"]</div>
+}
+
+<form method="post" action="/Hareket/Ekle">
+    <div class="mb-3">
+        <label>Kullanıcı</label>
+        <select name="kullaniciId" class="form-control">
+            @foreach (var k in (List<DepoYonetim.Models.Kullanici>)ViewBag.Kullanicilar)
+            {
+                <option value="@k.Id">@k.AdSoyad</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Raf</label>
+        <select name="rafId" class="form-control">
+            @foreach (var r in (List<DepoYonetim.Models.Raf>)ViewBag.Raflar)
+            {
+                <option value="@r.Id">@r.Kod</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Ürün</label>
+        <select name="urunId" class="form-control">
+            @foreach (var u in (List<DepoYonetim.Models.Urun>)ViewBag.Urunler)
+            {
+                <option value="@u.Id">@u.Ad</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>İşlem Tipi</label>
+        <select name="tip" class="form-control">
+            <option value="Giris">Rafa Bırak (Giriş)</option>
+            <option value="Cikis">Raftan Al (Çıkış)</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Miktar</label>
+        <input type="number" name="miktar" class="form-control" value="1" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="/Hareket" class="btn btn-secondary">Vazgeç</a>
+</form>

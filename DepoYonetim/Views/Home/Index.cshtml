@@ -1,0 +1,39 @@
+﻿@model List<DepoYonetim.Models.RafStok>
+
+@{ ViewData["Title"] = "Stok Durumu"; }
+
+<h1>Güncel Stok Durumu</h1>
+<p class="text-muted">Şu an hangi rafta hangi üründen kaç tane olduğunu gösterir.</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Henüz stok yok. Menüden bir <a href="/Hareket/Ekle">hareket ekleyerek</a> rafa ürün bırakabilirsin.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Fabrika</th>
+                <th>Depo</th>
+                <th>Raf</th>
+                <th>Ürün</th>
+                <th>Miktar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.Raf.Depo.Fabrika.Ad</td>
+                    <td>@s.Raf.Depo.Ad</td>
+                    <td>@s.Raf.Kod</td>
+                    <td>@s.Urun.Ad</td>
+                    <td><strong>@s.Miktar</strong> @s.Urun.Birim</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

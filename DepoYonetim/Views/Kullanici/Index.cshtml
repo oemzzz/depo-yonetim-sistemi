@@ -1,0 +1,22 @@
+@model List<DepoYonetim.Models.Kullanici>
+
+@{ ViewData["Title"] = "Kullanıcılar"; }
+
+<h1>Kullanıcılar</h1>
+<p><a href="/Kullanici/Ekle">+ Yeni Kullanıcı Ekle</a></p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr><th>Id</th><th>Ad Soyad</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.Id</td>
+                <td>@k.AdSoyad</td>
+                <td><a href="/Kullanici/Sil/@k.Id">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

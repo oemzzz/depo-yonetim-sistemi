@@ -1,0 +1,21 @@
+@{ ViewData["Title"] = "Depo Ekle"; }
+
+<h1>Yeni Depo</h1>
+
+<form method="post" action="/Depo/Ekle">
+    <div class="mb-3">
+        <label>Depo Adı</label>
+        <input type="text" name="Ad" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Fabrika</label>
+        <select name="FabrikaId" class="form-control">
+            @foreach (var f in (List<DepoYonetim.Models.Fabrika>)ViewBag.Fabrikalar)
+            {
+                <option value="@f.Id">@f.Ad</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="/Depo" class="btn btn-secondary">Vazgeç</a>
+</form>

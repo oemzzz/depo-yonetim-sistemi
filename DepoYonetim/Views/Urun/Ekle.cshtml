@@ -1,0 +1,20 @@
+@{ ViewData["Title"] = "Ürün Ekle"; }
+
+<h1>Yeni Ürün</h1>
+
+<form method="post" action="/Urun/Ekle">
+    <div class="mb-3">
+        <label>Ürün Adı</label>
+        <input type="text" name="Ad" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Barkod</label>
+        <input type="text" name="Barkod" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Birim</label>
+        <input type="text" name="Birim" class="form-control" value="adet" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="/Urun" class="btn btn-secondary">Vazgeç</a>
+</form>

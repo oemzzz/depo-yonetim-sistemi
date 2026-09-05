@@ -1,0 +1,28 @@
+@model List<DepoYonetim.Models.StokHareketi>
+
+@{ ViewData["Title"] = "Hareket Geçmişi"; }
+
+<h1>Hareket Geçmişi</h1>
+<p><a href="/Hareket/Ekle">+ Yeni Hareket</a></p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tarih</th><th>Kullanıcı</th><th>Raf</th>
+            <th>Ürün</th><th>Tip</th><th>Miktar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var h in Model)
+        {
+            <tr>
+                <td>@h.Tarih.ToString("g")</td>
+                <td>@h.Kullanici.AdSoyad</td>
+                <td>@h.Raf.Kod</td>
+                <td>@h.Urun.Ad</td>
+                <td>@h.Tip</td>
+                <td>@h.Miktar</td>
+            </tr>
+        }
+    </tbody>
+</table>

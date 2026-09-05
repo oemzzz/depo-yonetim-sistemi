@@ -1,0 +1,12 @@
+@{ ViewData["Title"] = "Fabrika Ekle"; }
+
+<h1>Yeni Fabrika</h1>
+
+<form method="post" action="/Fabrika/Ekle">
+    <div class="mb-3">
+        <label>Fabrika Adı</label>
+        <input type="text" name="Ad" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="/Fabrika" class="btn btn-secondary">Vazgeç</a>
+</form>
